@@ -6,3 +6,4 @@
 
  + Receita UDP e TCP em Python: https://wiki.python.org.br/SocketBasico
  + Módulo Socket (Python 3): https://docs.python.org/3/library/socket.html
+ + https://github.com/WellersonPrenholato/jokenpo-socket
