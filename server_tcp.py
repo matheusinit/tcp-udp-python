@@ -28,81 +28,81 @@ sock.listen(5)
 print("Aguardando a conexão de um Cliente:")
 
 # Connection and address
-conn, ender = sock.accept() 
+conn, ender = sock.accept()
 
 # Presentation of the client's address, composed of the host name and the port that were connected.
-print('Connectado com', ender) 
+print('Connectado com', ender)
 print("\nOs palpites do servidor são ALEATÓRIOS!\n")
 
 # The server is released indefinitely or until the connection is closed.
     # Waits for data sent over the network of up to 1024 Bytes, the 'recv' function has only 1 argument which is the size of the Buffer.
 while True:
     # 1024 Byter will be received from client
-    data = conn.recv(1024) 
+    data = conn.recv(1024)
 
     # print("Resposta do cliente:", data.decode())
-    
-    if not data: 
-      
+
+    if not data:
+
         # When there is nothing else in the data, the connection is closed
         print("\nConexão encerrada!\n")
 
         # Serves to close the connection between applications.
-        conn.close() 
+        conn.close()
         break
-    
+
     # Used to decode and transform the message into a string sent by the client.
-    palpiteClient = str(data.decode()) 
+    palpiteClient = str(data.decode())
     # The server guess is chosen at random, the options are inside the Playedoptions list.
-    palpiteServ = random.choice(opcoesJogadas) 
+    palpiteServ = random.choice(opcoesJogadas)
 
     # Display server guess
-    print("* O Servidor respondeu:", palpiteServ) 
+    print("* O Servidor respondeu:", palpiteServ)
 
-    
+
     # Check when the client wins the move
     if (palpiteClient == 'Tesoura' and palpiteServ == 'Papel'):
-      result = r"""\    Você	 Máquina
+      result = r"""\
+    Você	    Máquina
     _    _
    (_)  / )       _____
      | (_/       O_____O
     _+/          /     /
    //|\\        /____ /
   // ||        O_____O
- (/  |/ 
-
+ (/  |/
    ┬  ┬┌─┐┌┐┌┌─┐┌─┐┬ ┬
    └┐┌┘├┤ ││││  ├┤ │ │
     └┘ └─┘┘└┘└─┘└─┘└─┘"""
     elif (palpiteClient == 'Pedra' and palpiteServ == 'Tesoura'):
-      result = r"""\    Você	 Máquina
+      result = r"""\
+    Você	    Máquina
                   _    _
     ____         (_)  / )
-  _/  _ \\         | (_/ 
- / _ - _ \\       _+/  
+  _/  _ \\         | (_/
+ / _ - _ \\       _+/
  \\_______/      //|\\
                 // ||
-               (/  |/ 
-
+               (/  |/
    ┬  ┬┌─┐┌┐┌┌─┐┌─┐┬ ┬
    └┐┌┘├┤ ││││  ├┤ │ │
     └┘ └─┘┘└┘└─┘└─┘└─┘"""
-    
+
     elif (palpiteClient == 'Papel' and palpiteServ == 'Pedra'):
         result = r"""\
-     Você	 Máquina
+    Você	     Máquina
     _____         ____
    O_____O      _/  _ \\
    /     /     / _ - _ \\
   /____ /      \\_______/
  O_____O
-
    ┬  ┬┌─┐┌┐┌┌─┐┌─┐┬ ┬
    └┐┌┘├┤ ││││  ├┤ │ │
     └┘ └─┘┘└┘└─┘└─┘└─┘"""
-    
+
     elif (palpiteClient == 'Papel' and palpiteServ == 'Tesoura'):
-    	result = r"""\     Você	 Máquina
+    	result = r"""\
+    Você	    Máquina
                   _    _
     _____        (_)  / )
    O_____O         | (_/
@@ -110,37 +110,37 @@ while True:
   /____ /        //|\\
  O_____O        // ||
                (/  |/
-
-   ┌─┐┌─┐┬─┐┌┬┐┌─┐┬ ┬ 
-   ├─┘├┤ ├┬┘ ││├┤ │ │ 
+   ┌─┐┌─┐┬─┐┌┬┐┌─┐┬ ┬
+   ├─┘├┤ ├┬┘ ││├┤ │ │
    ┴  └─┘┴└──┴┘└─┘└─┘"""
 
     elif (palpiteClient == 'Tesoura' and palpiteServ == 'Pedra'):
-      result = r"""\     Você	 Máquina
+      result = r"""\
+    Você	     Máquina
     _    _
    (_)  / )       ____
      | (_/      _/  _ \\
     _+/        / _ - _ \\
    //|\\       \\_______/
   // ||
- (/  |/ 
-
-   ┌─┐┌─┐┬─┐┌┬┐┌─┐┬ ┬ 
-   ├─┘├┤ ├┬┘ ││├┤ │ │ 
+ (/  |/
+   ┌─┐┌─┐┬─┐┌┬┐┌─┐┬ ┬
+   ├─┘├┤ ├┬┘ ││├┤ │ │
    ┴  └─┘┴└──┴┘└─┘└─┘"""
-    
+
     elif (palpiteClient == 'Pedra' and palpiteServ == 'Papel'):
-      result = r"""\    Você	 Máquina
+      result = r"""\
+    Você	    Máquina
     ____	  _____
   _/  _ \\       O_____O
  / _ - _ \\      /     /
  \\_______/     /____ /
                O_____O
-                   
-   ┌─┐┌─┐┬─┐┌┬┐┌─┐┬ ┬ 
-   ├─┘├┤ ├┬┘ ││├┤ │ │ 
+
+   ┌─┐┌─┐┬─┐┌┬┐┌─┐┬ ┬
+   ├─┘├┤ ├┬┘ ││├┤ │ │
    ┴  └─┘┴└──┴┘└─┘└─┘ """
-    
+
     # Check in case of a tie
     elif (palpiteClient == 'Tesoura' and palpiteServ == 'Tesoura'):
 	    result = r"""\
@@ -152,35 +152,33 @@ while True:
    //|\\        //|\\
   // ||        // ||
  (/  |/       (/  |/
-
-   ┌─┐┌┬┐┌─┐┌─┐┌┬┐┌─┐ 
-   ├┤ │││├─┘├─┤ │ ├┤  
+   ┌─┐┌┬┐┌─┐┌─┐┌┬┐┌─┐
+   ├┤ │││├─┘├─┤ │ ├┤
    └─┘┴ ┴┴  ┴ ┴ ┴ └─┘ """
-   
+
     elif (palpiteClient == 'Pedra' and palpiteServ == 'Pedra'):
-	    result = r"""\    Você	 Máquina
+	    result = r"""\
+    Você	    Máquina
     ____	  ____
   _/  _ \\      _/    \\
  / _ - _ \\    / _ - _ \\
- \\_______/    \\_______/ 
-
-   ┌─┐┌┬┐┌─┐┌─┐┌┬┐┌─┐ 
-   ├┤ │││├─┘├─┤ │ ├┤  
+ \\_______/    \\_______/
+   ┌─┐┌┬┐┌─┐┌─┐┌┬┐┌─┐
+   ├┤ │││├─┘├─┤ │ ├┤
    └─┘┴ ┴┴  ┴ ┴ ┴ └─┘ """
-   
+
     elif (palpiteClient == 'Papel' and palpiteServ == 'Papel'):
 	    result = r"""\
-     Você	 Máquina
+     Você	     Máquina
     _____         _____
    O_____O       O_____O
    /     /       /     /
   /____ /       /____ /
  O_____O       O_____O
-
-   ┌─┐┌┬┐┌─┐┌─┐┌┬┐┌─┐ 
-   ├┤ │││├─┘├─┤ │ ├┤  
+   ┌─┐┌┬┐┌─┐┌─┐┌┬┐┌─┐
+   ├┤ │││├─┘├─┤ │ ├┤
    └─┘┴ ┴┴  ┴ ┴ ┴ └─┘ """
-   
+
     # Return string to the client
     #result = '- Cliente: '+ str(palpiteClient) + '\n - Servidor: ' + str(palpiteServ) + '\n=> GANHADOR: ' + str(ganhador) + '\n' # Concatenation of results, being presented to the client
 
