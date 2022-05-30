@@ -6,9 +6,9 @@ import socket
 import random
 
 # Server host and port
-HOST = 'localhost' # Identifica o nome do servidor
-PORT = 5000 # Identifica a porta do servidor
-addr = (HOST, PORT)
+HOST_TCP = 'localhost' # Identifica o nome do servidor
+PORT_TCP = 5000 # Identifica a porta do servidor
+addr = (HOST_TCP, PORT_TCP)
 
 # List with possible moves that can be chosen by the server
 opcoesJogadas = ['Pedra', 'Papel', 'Tesoura']
