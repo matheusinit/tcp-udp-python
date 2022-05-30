@@ -10,5 +10,5 @@
  + Receita UDP e TCP em Python: https://wiki.python.org.br/SocketBasico
  + Módulo Socket (Python 3): https://docs.python.org/3/library/socket.html
  + JO KEN PO em Python utilizando TCP:https://github.com/WellersonPrenholato/jokenpo-socket
- + Link pdf: https://fibre.org.br/wp-content/uploads/2020/04/tutorialFIBRE_comunicacaoViaSocket.pdf
+ + PDF cominstruções sobre TCP/UDP em Python: https://fibre.org.br/wp-content/uploads/2020/04/tutorialFIBRE_comunicacaoViaSocket.pdf
  + JO KEN PO ASCII https://github.com/Mewbi/Jokenpo/blob/master/ASCII-jokenpo
