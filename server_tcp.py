@@ -36,7 +36,7 @@ print("\nOs palpites do servidor são ALEATÓRIOS!\n")
 
 # The server is released indefinitely or until the connection is closed.
     # Waits for data sent over the network of up to 1024 Bytes, the 'recv' function has only 1 argument which is the size of the Buffer.
-while True: 
+while True:
     # 1024 Byter will be received from client
     data = conn.recv(1024) 
 
@@ -61,19 +61,128 @@ while True:
 
     
     # Check when the client wins the move
-    if ((palpiteClient == 'Tesoura' and palpiteServ == 'Papel') or (palpiteClient == 'Pedra' and palpiteServ == 'Tesoura') or (palpiteClient == 'Papel' and palpiteServ == 'Pedra')):
-        ganhador = 'Cliente'
+    if (palpiteClient == 'Tesoura' and palpiteServ == 'Papel'):
+      result = r"""\    Você	 Máquina
+    _    _
+   (_)  / )       _____
+     | (_/       O_____O
+    _+/          /     /
+   //|\\        /____ /
+  // ||        O_____O
+ (/  |/ 
+
+   ┬  ┬┌─┐┌┐┌┌─┐┌─┐┬ ┬
+   └┐┌┘├┤ ││││  ├┤ │ │
+    └┘ └─┘┘└┘└─┘└─┘└─┘"""
+    elif (palpiteClient == 'Pedra' and palpiteServ == 'Tesoura'):
+      result = r"""\    Você	 Máquina
+                  _    _
+    ____         (_)  / )
+  _/  _ \\         | (_/ 
+ / _ - _ \\       _+/  
+ \\_______/      //|\\
+                // ||
+               (/  |/ 
+
+   ┬  ┬┌─┐┌┐┌┌─┐┌─┐┬ ┬
+   └┐┌┘├┤ ││││  ├┤ │ │
+    └┘ └─┘┘└┘└─┘└─┘└─┘"""
     
-    # Check when the Server wins the move
-    if ((palpiteClient == 'Papel' and palpiteServ == 'Tesoura') or (palpiteClient == 'Tesoura' and palpiteServ == 'Pedra') or (palpiteClient == 'Pedra' and palpiteServ == 'Papel')):
-        ganhador = 'Servidor'
+    elif (palpiteClient == 'Papel' and palpiteServ == 'Pedra'):
+        result = r"""\
+     Você	 Máquina
+    _____         ____
+   O_____O      _/  _ \\
+   /     /     / _ - _ \\
+  /____ /      \\_______/
+ O_____O
+
+   ┬  ┬┌─┐┌┐┌┌─┐┌─┐┬ ┬
+   └┐┌┘├┤ ││││  ├┤ │ │
+    └┘ └─┘┘└┘└─┘└─┘└─┘"""
+    
+    elif (palpiteClient == 'Papel' and palpiteServ == 'Tesoura'):
+    	result = r"""\     Você	 Máquina
+                  _    _
+    _____        (_)  / )
+   O_____O         | (_/
+   /     /        _+/
+  /____ /        //|\\
+ O_____O        // ||
+               (/  |/
+
+   ┌─┐┌─┐┬─┐┌┬┐┌─┐┬ ┬ 
+   ├─┘├┤ ├┬┘ ││├┤ │ │ 
+   ┴  └─┘┴└──┴┘└─┘└─┘"""
+
+    elif (palpiteClient == 'Tesoura' and palpiteServ == 'Pedra'):
+      result = r"""\     Você	 Máquina
+    _    _
+   (_)  / )       ____
+     | (_/      _/  _ \\
+    _+/        / _ - _ \\
+   //|\\       \\_______/
+  // ||
+ (/  |/ 
+
+   ┌─┐┌─┐┬─┐┌┬┐┌─┐┬ ┬ 
+   ├─┘├┤ ├┬┘ ││├┤ │ │ 
+   ┴  └─┘┴└──┴┘└─┘└─┘"""
+    
+    elif (palpiteClient == 'Pedra' and palpiteServ == 'Papel'):
+      result = r"""\    Você	 Máquina
+    ____	  _____
+  _/  _ \\       O_____O
+ / _ - _ \\      /     /
+ \\_______/     /____ /
+               O_____O
+                   
+   ┌─┐┌─┐┬─┐┌┬┐┌─┐┬ ┬ 
+   ├─┘├┤ ├┬┘ ││├┤ │ │ 
+   ┴  └─┘┴└──┴┘└─┘└─┘ """
     
     # Check in case of a tie
-    if (palpiteClient == palpiteServ):
-        ganhador = 'Empate'
+    elif (palpiteClient == 'Tesoura' and palpiteServ == 'Tesoura'):
+	    result = r"""\
+     Você	 Máquina
+    _    _       _    _
+   (_)  / )     (_)  / )
+     | (_/        | (_/
+    _+/          _+/
+   //|\\        //|\\
+  // ||        // ||
+ (/  |/       (/  |/
 
+   ┌─┐┌┬┐┌─┐┌─┐┌┬┐┌─┐ 
+   ├┤ │││├─┘├─┤ │ ├┤  
+   └─┘┴ ┴┴  ┴ ┴ ┴ └─┘ """
+   
+    elif (palpiteClient == 'Pedra' and palpiteServ == 'Pedra'):
+	    result = r"""\    Você	 Máquina
+    ____	  ____
+  _/  _ \\      _/    \\
+ / _ - _ \\    / _ - _ \\
+ \\_______/    \\_______/ 
+
+   ┌─┐┌┬┐┌─┐┌─┐┌┬┐┌─┐ 
+   ├┤ │││├─┘├─┤ │ ├┤  
+   └─┘┴ ┴┴  ┴ ┴ ┴ └─┘ """
+   
+    elif (palpiteClient == 'Papel' and palpiteServ == 'Papel'):
+	    result = r"""\
+     Você	 Máquina
+    _____         _____
+   O_____O       O_____O
+   /     /       /     /
+  /____ /       /____ /
+ O_____O       O_____O
+
+   ┌─┐┌┬┐┌─┐┌─┐┌┬┐┌─┐ 
+   ├┤ │││├─┘├─┤ │ ├┤  
+   └─┘┴ ┴┴  ┴ ┴ ┴ └─┘ """
+   
     # Return string to the client
-    result = '- Cliente: '+ str(palpiteClient) + '\n - Servidor: ' + str(palpiteServ) + '\n=> GANHADOR: ' + str(ganhador) + '\n' # Concatenation of results, being presented to the client
+    #result = '- Cliente: '+ str(palpiteClient) + '\n - Servidor: ' + str(palpiteServ) + '\n=> GANHADOR: ' + str(ganhador) + '\n' # Concatenation of results, being presented to the client
 
     # Used to send the result to the client.
     conn.sendall(bytes(str(result), 'utf8'))
