@@ -1,4 +1,4 @@
-# 🎮 JO KEN PO utilizando TCP/UDP
+# 🎮 JO KEN PO
 
 ## 📌 O intuito dessa atividade foi utilizar na prática os protocolos TCP e UDP através do jogo Pedra, Papel e Tesoura de formas simples. Utilizando a biblioteca socket do python para criar um cliente e um servridor.
 
