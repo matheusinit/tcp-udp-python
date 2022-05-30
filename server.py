@@ -12,11 +12,13 @@ socketUdp = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 socketUdp.bind((HOST_UDP, PORT_UDP))
 
-name = socketUdp.recvfrom(32)
+name, addr = socketUdp.recvfrom(32)
 
-print(name)
+name = name.decode('utf8')
 
+print(f"{name} conectado da máquina {addr[0]} na porta {addr[1]}\n")
 
+socketUdp.close()
 
 # Server host and port
 HOST_TCP = 'localhost' # Identifica o nome do servidor
@@ -75,8 +77,8 @@ while True:
 
     # Check when the client wins the move
     if (palpiteClient == 'Tesoura' and palpiteServ == 'Papel'):
-      result = r"""\
-    Você	    Máquina
+      result = fr"""\
+   {name}	    Máquina
     _    _
    (_)  / )       _____
      | (_/       O_____O
@@ -88,8 +90,8 @@ while True:
    └┐┌┘├┤ ││││  ├┤ │ │
     └┘ └─┘┘└┘└─┘└─┘└─┘"""
     elif (palpiteClient == 'Pedra' and palpiteServ == 'Tesoura'):
-      result = r"""\
-    Você	    Máquina
+      result = fr"""\
+   {name}	    Máquina
                   _    _
     ____         (_)  / )
   _/  _ \\         | (_/
@@ -102,8 +104,8 @@ while True:
     └┘ └─┘┘└┘└─┘└─┘└─┘"""
 
     elif (palpiteClient == 'Papel' and palpiteServ == 'Pedra'):
-        result = r"""\
-    Você	     Máquina
+        result = fr"""\
+   {name}	     Máquina
     _____         ____
    O_____O      _/  _ \\
    /     /     / _ - _ \\
@@ -114,8 +116,8 @@ while True:
     └┘ └─┘┘└┘└─┘└─┘└─┘"""
 
     elif (palpiteClient == 'Papel' and palpiteServ == 'Tesoura'):
-    	result = r"""\
-    Você	    Máquina
+    	result = fr"""\
+   {name}	    Máquina
                   _    _
     _____        (_)  / )
    O_____O         | (_/
@@ -128,8 +130,8 @@ while True:
    ┴  └─┘┴└──┴┘└─┘└─┘"""
 
     elif (palpiteClient == 'Tesoura' and palpiteServ == 'Pedra'):
-      result = r"""\
-    Você	     Máquina
+      result = fr"""\
+   {name}	     Máquina
     _    _
    (_)  / )       ____
      | (_/      _/  _ \\
@@ -142,8 +144,8 @@ while True:
    ┴  └─┘┴└──┴┘└─┘└─┘"""
 
     elif (palpiteClient == 'Pedra' and palpiteServ == 'Papel'):
-      result = r"""\
-    Você	    Máquina
+      result = fr"""\
+   {name}	    Máquina
     ____	  _____
   _/  _ \\       O_____O
  / _ - _ \\      /     /
@@ -156,8 +158,8 @@ while True:
 
     # Check in case of a tie
     elif (palpiteClient == 'Tesoura' and palpiteServ == 'Tesoura'):
-	    result = r"""\
-     Você	 Máquina
+	    result = fr"""\
+     {name}	 Máquina
     _    _       _    _
    (_)  / )     (_)  / )
      | (_/        | (_/
@@ -170,8 +172,8 @@ while True:
    └─┘┴ ┴┴  ┴ ┴ ┴ └─┘ """
 
     elif (palpiteClient == 'Pedra' and palpiteServ == 'Pedra'):
-	    result = r"""\
-    Você	    Máquina
+	    result = fr"""\
+   {name}	    Máquina
     ____	  ____
   _/  _ \\      _/    \\
  / _ - _ \\    / _ - _ \\
@@ -181,8 +183,8 @@ while True:
    └─┘┴ ┴┴  ┴ ┴ ┴ └─┘ """
 
     elif (palpiteClient == 'Papel' and palpiteServ == 'Papel'):
-	    result = r"""\
-     Você	     Máquina
+	    result = fr"""\
+     {name}	     Máquina
     _____         _____
    O_____O       O_____O
    /     /       /     /

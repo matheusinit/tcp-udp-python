@@ -7,6 +7,19 @@
 import socket
 import random
 
+HOST_UDP = '127.0.0.1'
+PORT_UDP = 3000
+
+socketUdp = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+
+name = input("Nome do jogador: ")
+
+name = name.encode('utf8')
+
+socketUdp.sendto(name, (HOST_UDP, PORT_UDP))
+
+socketUdp.close()
+
 # Identification of the client's HOST AND PORT
 HOST_TCP = '127.0.0.1' # Identifies the name of the client
 PORT_TCP = 5000 # Identifies the port of the client to communicate with the server
