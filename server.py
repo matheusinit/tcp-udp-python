@@ -5,6 +5,19 @@
 import socket
 import random
 
+HOST_UDP = 'localhost'
+PORT_UDP = 3000
+
+socketUdp = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+
+socketUdp.bind((HOST_UDP, PORT_UDP))
+
+name = socketUdp.recvfrom(32)
+
+print(name)
+
+
+
 # Server host and port
 HOST_TCP = 'localhost' # Identifica o nome do servidor
 PORT_TCP = 5000 # Identifica a porta do servidor
